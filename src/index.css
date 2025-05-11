@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 10px rgba(59, 130, 246, 0.5); }
+  50% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.8); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.futuristic-panel {
+  @apply bg-gradient-to-br from-slate-800/50 to-slate-900/50 text-white rounded-xl shadow-lg border border-blue-500/20 backdrop-blur-sm;
+  animation: pulse-glow 3s infinite;
+}
+
+.futuristic-grid {
+  background-image: radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.15) 1px, transparent 0);
+  background-size: 40px 40px;
+}
+
+.status-indicator {
+  @apply w-3 h-3 rounded-full relative;
+}
+
+.status-indicator::after {
+  content: '';
+  @apply absolute inset-0 rounded-full;
+  animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.status-indicator.active {
+  @apply bg-green-500;
+}
+
+.status-indicator.active::after {
+  @apply bg-green-500/50;
+}
+
+.status-indicator.inactive {
+  @apply bg-red-500;
+}
+
+.status-indicator.inactive::after {
+  @apply bg-red-500/50;
+}
+
+.futuristic-button {
+  @apply relative overflow-hidden transition-all duration-300 text-white font-medium rounded-lg;
+  background: linear-gradient(45deg, rgba(59, 130, 246, 0.8), rgba(147, 51, 234, 0.8));
+}
+
+.futuristic-button::before {
+  content: '';
+  @apply absolute inset-0 bg-white/20 transform scale-x-0 origin-left transition-transform duration-300;
+}
+
+.futuristic-button:hover::before {
+  @apply scale-x-100;
+}
+
+.floating-panel {
+  animation: float 4s ease-in-out infinite;
+}
+
+.cyber-grid {
+  @apply bg-slate-900;
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(to right, rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+}
+
+/* Enhanced form styles */
+input {
+  @apply bg-slate-800/50 border border-blue-500/30 rounded-lg px-4 py-3 text-lg text-white placeholder-slate-400 
+    focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all duration-300;
+}
+
+button[type="submit"] {
+  @apply bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold text-lg py-3 px-6 rounded-lg
+    transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25
+    focus:outline-none focus:ring-2 focus:ring-blue-500/50;
+}
